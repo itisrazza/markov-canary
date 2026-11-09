@@ -76,7 +76,7 @@ func serve(ctx context.Context) error {
 	logger := slog.New(slog.NewTextHandler(os.Stderr, nil))
 	canaryServer := &server.Server{
 		Store:    database,
-		Notifier: &notify.Throttled{Next: notify.SMTP{Config: cfg.SMTP}, Cooldown: cfg.NotifyCooldown},
+		Notifier: &notify.Throttled{Next: notifiers(cfg), Cooldown: cfg.NotifyCooldown},
 		Chain:    chain,
 		Tarpit:   cfg.Tarpit,
 		Logger:   logger,
@@ -104,6 +104,17 @@ func serve(ctx context.Context) error {
 		return fmt.Errorf("shut down server: %w", err)
 	}
 	return nil
+}
+
+func notifiers(cfg config.Server) notify.All {
+	var channels notify.All
+	if cfg.SMTP != nil {
+		channels = append(channels, notify.SMTP{Config: *cfg.SMTP})
+	}
+	if cfg.WebhookURL != "" {
+		channels = append(channels, notify.Webhook{URL: cfg.WebhookURL, Client: http.DefaultClient})
+	}
+	return channels
 }
 
 func loadChain(corpusPath string) (*markov.Chain, error) {

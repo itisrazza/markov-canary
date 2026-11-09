@@ -1,7 +1,9 @@
 package config
 
 import (
+	"errors"
 	"fmt"
+	"net/url"
 	"os"
 	"strconv"
 	"strings"
@@ -32,6 +34,13 @@ func (e InvalidVariableError) Unwrap() error {
 	return e.Cause
 }
 
+type NoNotifierError struct{}
+
+func (NoNotifierError) Error() string {
+	return fmt.Sprintf("no notification channel configured: set %sSMTP_HOST for email, %sWEBHOOK_URL for a webhook, or both",
+		envPrefix, envPrefix)
+}
+
 type SMTP struct {
 	Host     string
 	Port     int
@@ -47,10 +56,13 @@ type Tarpit struct {
 	CorpusPath string
 }
 
+// Server needs at least one of SMTP and WebhookURL; a nil SMTP or an empty
+// WebhookURL means that channel is switched off.
 type Server struct {
 	ListenAddr     string
 	NotifyCooldown time.Duration
-	SMTP           SMTP
+	SMTP           *SMTP
+	WebhookURL     string
 	Tarpit         Tarpit
 }
 
@@ -62,6 +74,13 @@ func LoadServer() (Server, error) {
 	smtp, err := loadSMTP()
 	if err != nil {
 		return Server{}, err
+	}
+	webhookURL, err := loadWebhookURL()
+	if err != nil {
+		return Server{}, err
+	}
+	if smtp == nil && webhookURL == "" {
+		return Server{}, NoNotifierError{}
 	}
 	tarpit, err := loadTarpit()
 	if err != nil {
@@ -75,28 +94,45 @@ func LoadServer() (Server, error) {
 		ListenAddr:     optional("LISTEN", "127.0.0.1:8080"),
 		NotifyCooldown: cooldown,
 		SMTP:           smtp,
+		WebhookURL:     webhookURL,
 		Tarpit:         tarpit,
 	}, nil
 }
 
-func loadSMTP() (SMTP, error) {
-	host, err := required("SMTP_HOST")
-	if err != nil {
-		return SMTP{}, err
+func loadWebhookURL() (string, error) {
+	return parsed("WEBHOOK_URL", "", func(value string) (string, error) {
+		if value == "" {
+			return "", nil
+		}
+		parsedURL, err := url.Parse(value)
+		if err != nil {
+			return "", err
+		}
+		if parsedURL.Scheme != "http" && parsedURL.Scheme != "https" || parsedURL.Host == "" {
+			return "", errors.New("must be an absolute http or https URL")
+		}
+		return value, nil
+	})
+}
+
+func loadSMTP() (*SMTP, error) {
+	host := optional("SMTP_HOST", "")
+	if host == "" {
+		return nil, nil
 	}
 	from, err := required("MAIL_FROM")
 	if err != nil {
-		return SMTP{}, err
+		return nil, err
 	}
 	to, err := required("MAIL_TO")
 	if err != nil {
-		return SMTP{}, err
+		return nil, err
 	}
 	port, err := parsed("SMTP_PORT", "587", strconv.Atoi)
 	if err != nil {
-		return SMTP{}, err
+		return nil, err
 	}
-	return SMTP{
+	return &SMTP{
 		Host:     host,
 		Port:     port,
 		Username: optional("SMTP_USERNAME", ""),
