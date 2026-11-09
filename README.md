@@ -46,19 +46,68 @@ Everything is configured through environment variables.
 | ------------------------------- | ------------------ | ---------------------------------------------------- |
 | `MARKOV_CANARY_DATABASE`        | `markov-canary.db` | SQLite database path                                 |
 | `MARKOV_CANARY_LISTEN`          | `127.0.0.1:8080`   | Listen address                                       |
-| `MARKOV_CANARY_SMTP_HOST`       | required           | SMTP server (STARTTLS; implicit TLS is unsupported)  |
+| `MARKOV_CANARY_SMTP_HOST`       | none               | SMTP server (STARTTLS; implicit TLS is unsupported)  |
 | `MARKOV_CANARY_SMTP_PORT`       | `587`              | SMTP port                                            |
 | `MARKOV_CANARY_SMTP_USERNAME`   | none               | SMTP username; authentication is skipped when empty  |
 | `MARKOV_CANARY_SMTP_PASSWORD`   | none               | SMTP password                                        |
-| `MARKOV_CANARY_MAIL_FROM`       | required           | Sender address                                       |
-| `MARKOV_CANARY_MAIL_TO`         | required           | Comma-separated recipient addresses                  |
-| `MARKOV_CANARY_NOTIFY_COOLDOWN` | `1h`               | Minimum gap between emails for the same key          |
+| `MARKOV_CANARY_MAIL_FROM`       | with SMTP          | Sender address                                       |
+| `MARKOV_CANARY_MAIL_TO`         | with SMTP          | Comma-separated recipient addresses                  |
+| `MARKOV_CANARY_WEBHOOK_URL`     | none               | URL to `POST` each alert to as JSON                  |
+| `MARKOV_CANARY_NOTIFY_COOLDOWN` | `1h`               | Minimum gap between alerts for the same key          |
 | `MARKOV_CANARY_TOKEN_DELAY`     | `200ms`            | Delay before each generated word                     |
 | `MARKOV_CANARY_MAX_TOKENS`      | `1024`             | Upper bound on words per response                    |
 | `MARKOV_CANARY_CORPUS`          | built-in           | Text file to train the Markov chain on               |
 
-Every detection is recorded, but email is throttled: one per issued key per
+At least one alert channel is required: set `MARKOV_CANARY_SMTP_HOST` for
+email, `MARKOV_CANARY_WEBHOOK_URL` for a webhook, or both.
+
+Every detection is recorded, but alerts are throttled: one per issued key per
 cooldown, and one per cooldown for all flags combined.
 
 The server speaks plain HTTP and is meant to sit behind a TLS-terminating
 reverse proxy. `X-Forwarded-For` is recorded as sent, not trusted.
+
+### Webhook payload
+
+The webhook receives a JSON object; any answer outside `2xx` is logged as a
+failure. `token` is `null` for flags.
+
+```json
+{
+  "text": "[markov-canary] leak: decoy .env in infra repo",
+  "id": 12,
+  "kind": "leak",
+  "occurred_at": "2026-11-10T01:02:03Z",
+  "provider": "anthropic",
+  "token": { "id": 3, "provider": "anthropic", "label": "decoy .env in infra repo", "issued_at": "2026-11-01T09:00:00Z" },
+  "key_prefix": "sk-ant-api03-zHM",
+  "key_sha256": "3f79…",
+  "remote_addr": "203.0.113.7:51234",
+  "forwarded_for": "",
+  "user_agent": "python-requests/2.32",
+  "method": "POST",
+  "path": "/v1/messages",
+  "body": "{\"model\":\"…\"}"
+}
+```
+
+## Docker
+
+Images for `linux/amd64` and `linux/arm64` are published to GitHub Packages
+on every push to `main` (tagged `main`) and every `v*` tag (tagged with the
+version and `latest`).
+
+```bash
+docker run -d --name markov-canary -p 8080:8080 -v markov-canary:/data -e MARKOV_CANARY_WEBHOOK_URL=https://example.com/hook ghcr.io/itisrazza/markov-canary:main
+```
+
+```bash
+docker exec markov-canary markov-canary issue -provider openai -label "decoy .env in infra repo"
+```
+
+The database lives in the `/data` volume, and the container runs as a
+non-root user.
+
+## Licence
+
+[MIT](LICENSE)
