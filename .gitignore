@@ -1,0 +1,5 @@
+/markov-canary
+*.db
+*.db-shm
+*.db-wal
+.env
