@@ -1,21 +1,341 @@
-Sure, here is a summary of the main points you asked about. The first thing to consider is how the system handles incoming requests. In most cases the system will accept the request and pass it to the next stage. The next stage is where the data is validated and stored. You can use the following approach to make sure the data is consistent.
-
-The first step is to define the structure of the data. The structure of the data depends on how the system is going to be used. In most cases you can use a simple table with a small number of columns. A simple table is easy to reason about and easy to change later. If you need to change the structure later, you can use a migration to move the data.
-
-Here is a summary of the approach. The first step is to read the configuration. The next step is to open a connection to the service. In most cases the connection is kept open for the lifetime of the process. If the connection is lost, the process will try to open a new one. You can use a timeout to make sure the process does not wait forever.
-
-It is important to note that the service does not guarantee the order of the results. If you need the results in a particular order, you can use a sort after the results are returned. The sort is applied to the results in memory, so it is important to keep the number of results small. In most cases a small number of results is all you need.
-
-There are a few things to keep in mind when you are working with this kind of system. The first thing to keep in mind is that the system is not always available. The second thing to keep in mind is that the data is not always consistent. In most cases you can use a retry to handle the first problem. For the second problem, you can use a check to make sure the data is what you expect.
-
-Let me explain how the process works in more detail. The process starts when the service receives a request from the client. The service checks the request and returns an error if the request is not valid. If the request is valid, the service will pass it to the worker. The worker is responsible for the rest of the process. When the worker is done, the service returns the results to the client.
-
-Here is an example of how you can use the function. The function takes a list of values and returns a new list. The new list contains the values that match the condition. If the list is empty, the function returns an empty list. You can use the function in a loop, or you can pass it to another function. In most cases it is better to pass it to another function, because the code is easier to read.
-
-One way to think about this is to compare it to a queue. A queue is a list of items that are waiting to be processed. The items are processed in the order they were added to the queue. If the queue is full, the system will wait until there is room for a new item. It is important to keep the queue small, because a large queue can make the system slow.
-
-In summary, the approach is to keep the system simple and to make sure the data is consistent. The first step is to define the structure of the data, and the next step is to make sure the process can handle errors. If you follow these steps, the system will be easy to change later. I hope this helps, and let me know if you need more detail on any of the steps.
-
-Another thing to consider is how the results are returned to the client. The results are returned as a list of items, and each item contains a small number of fields. You can use the fields to decide what to do with the item. If the item is not what you expect, you can use a check to skip it and move on to the next one. The check is applied to each item in the list, so it is important to keep the check simple.
-
-To answer your question, the best option depends on how the service is going to be used. If the service is used by a small number of clients, you can use a simple approach and keep the configuration in a file. If the service is used by a large number of clients, it is better to keep the configuration in a table. The table is easy to change later, and the process does not need to be restarted when the configuration changes.
+A collection page with subfolders and a track list.
+A job checks the schema version when it starts and refuses to run if it doesn't match.
+A job writes its progress to its own row, the server reads it from there, and nothing more is needed between the two.
+A music server mostly reads and has one or a few users.
+A single register difference breaks the match, and it ripples through the rest of the function.
+A slimmer audio-only ffmpeg build would help later.
+Above that, it isn't rendered at all.
+After that the second core diverges, and I stopped there as you asked.
+Agreed on keeping generated assembly out of git.
+All of them move correctly in the shifted build, and the matching build is still byte-identical.
+Allow writes directly from job processes, under the rules above.
+Almost all of these are data inside the code region, such as version strings.
+An old major version keeps being served for at least one year after a new one arrives.
+An override wins wherever there is one.
+And should uploaded files land in one inbox folder or be organised automatically?
+Artifacts on a public repo can be downloaded by any signed-in user.
+At least one function was split from its own literal pool.
+Before I list questions, I'll check which tools this machine already has.
+Before pinning anything, I'll look up the current version of each.
+Before setting up the container, I'll record the compiler finding in memory.
+Both boots are running in the background.
+CI hasn't run yet, because nothing has been pushed.
+CI runs it on every push.
+CI would have failed on it.
+Changing your password signs out your other sessions.
+Checking how that table was classified.
+Checking what happens to the register after the load.
+Checking what the original targets and how the split emitted that instruction.
+Checking whether that word comes from the image and how it was classified.
+Clean install, with no peer-dependency warnings.
+Codegen can change between patch builds, not just between versions.
+Collection track counts now match the folder path exactly.
+Comparing instruction counts to find the first point where the two runs drift.
+Comparing that object in both runs at the same point.
+Ctrl-C stops both, and if either one exits, the other stops too.
+Data inside the code region is still decoded as instructions.
+Deployment stays a single binary, and the server and its jobs always come from the same build.
+Diffing against the committed baseline again.
+Diffing the full lists to find where they diverge.
+Do you agree, or would you rather keep the whole suite consistent?
+Does that match what you have in mind?
+Each override records who or what set it, and when.
+Earlier ones are only worth fetching if we get close but not exact.
+Every job is recorded in the database.
+Every word is checked by reassembling it.
+Everyone can browse a library's top-level collections or open a collection; each collection shows its total track count.
+Everyone needs to list collections and tracks, and stream a track.
+Files inside folders it couldn't open are left alone.
+Find the original source-file boundaries: alignment padding, shared constant pools, and library code grouped together.
+Finding the extent of the gap and which region should fill it.
+Finding the first byte that differs.
+Finding where in rodata the two images start to be offset by a word.
+Finding where the split makes that choice.
+Fixing that needs per-component builds, which is a separate job for later.
+For the non-matching build it re-pads, re-checksums and moves the later partitions along.
+Full matching is slower, but it's what makes every later change safe.
+Fully byte-identical, or byte-identical where practical?
+GitHub keeps the old name redirecting after a rename until a new repository takes that name.
+GitHub sometimes creates a new organisation package as private even when the repository is public, and you can change it in the package settings.
+Here's what the measurements show, which should help decide.
+I also removed the project memory I'd saved for the trailer, since the global rule replaces it.
+I can also record those layouts in the extractor so they're reproducible.
+I can't pull the image yet.
+I deleted the temporary backup branch afterwards.
+I don't want to guess the path.
+I had a look around before writing any code.
+I haven't changed it; do you want me to fix it?
+I haven't decoded those register values yet, so other aliases may still need mapping.
+I haven't turned signing off, because that's your call.
+I made the binaries executable because the archive didn't preserve that.
+I only listed the branch names and haven't fetched any content.
+I recommend doing this before anything else.
+I should have raised that choice instead of deciding it myself.
+I stopped rather than commit unsigned.
+I think that's what your versioning standard calls for.
+I'd leave them unpushed, the same as here.
+I'll add backticks in a doc comment, and split the long library test by moving the create-and-scan setup into a helper.
+I'll allow the lint on this one function, with the reason in the attribute.
+I'll build on the existing server crate.
+I'll change it to stop at the first empty entry.
+I'll check how they're managed before adding one.
+I'll check the generated linker script.
+I'll check what's uncommitted and where each repo would push, before pushing anything.
+I'll check with you before tagging the release.
+I'll check with you before tagging.
+I'll commit at sensible points as before, without pushing.
+I'll commit this before the build tooling.
+I'll extract it into a versioned folder and try it in the container.
+I'll keep the build compatible with musl from the start.
+I'll look for a trace flag that logs writes to an address.
+I'll look up current versions before pinning anything.
+I'll pick up the frames when they finish.
+I'll push when packaging reports back.
+I'll put the boot-and-summarise steps in a small script to speed up the next rounds.
+I'll re-apply it against the current text.
+I'll re-read the current text and apply the changes against it.
+I'll re-run the checks whose result got lost, then commit and push.
+I'll replace each one and add the imports.
+I'll rewrite it: no pattern language and no per-root policies.
+I'll run the same object classifier over those spans.
+I'll see what comes just before it.
+I'll spot-check the new string-based classifications.
+I'll turn signing off for this repo only, which leaves your global config untouched, and then commit.
+I'll wait for it in the background.
+I'll write a fuller decoder that records literal addresses for every call.
+I'm also removing a constant I don't use.
+I'm applying the edit in two parts.
+I'm finding the recipe that does that.
+I'm not watching it, as you said earlier.
+I'm reading the loader words from both images.
+I'm still wiring computed words (the linker-generated loader values) into the splitter.
+I've added the reminder to all three repos.
+I've left it alone; it's a separate fix if you want one.
+I've saved that in this project's memory so it carries over to future sessions.
+I've saved them to project memory instead.
+I've treated the low bits as the file offset, which fits: the regions sit back to back in the file with no gaps.
+If a valid copy is already present, it just checks the hash.
+If it fails again, send me the logs.
+If others contribute later, someone with access would run the check after merging, or on a trusted branch.
+If the image pushes but you can't pull it, check the package's visibility.
+If the script errors, paste me the console output.
+If they run as separate processes, the operating system gets all their memory back when they exit, and a crash in one doesn't take down the server.
+If you'd rather do that, I'll change the script to work from either starting point.
+If you're fine with that, nothing else is needed.
+In the meantime I'm carrying on from the headless copy.
+Indentation was two spaces, not four.
+It also labels branches and literal pools.
+It builds, checks and reports, and writes a per-unit table to the job summary.
+It compares what each returns and the memory each writes.
+It could be cut by generating the theme ahead of time, but that's a separate change.
+It has setup and sign-in, home, collections, a track list, a player bar, and settings pages for libraries, security and users.
+It holds only names, sizes and percentages, no instruction bytes.
+It isn't needed until the web client milestone.
+It logs anything the job writes to stderr.
+It looks encrypted and doesn't match its stored checksum.
+It matches byte for byte, but it's noise.
+It passes ruff format and ruff check.
+It reads only the header, through a bounds-checked cursor, so a truncated or malicious file returns an error instead of panicking.
+It reports match progress from the matching build and only checks that the non-matching build compiles and links.
+It slides through zeroed memory for a long stretch, so the entry point is well before the window.
+It starts the job from the server's own binary and checks that both report the same version.
+It uses invented artists and a layout similar to yours, plus tag edge cases.
+It walks a library and only reads tags from files that are new or have changed.
+It works, but it's one more service to manage.
+It would stay an external tool, not copied into this repo.
+It's only needed once we start the web client.
+It's probably safe to delete, but I'll leave it until you say so.
+It's running through rodata long before the fault.
+It's the same compiler family, so plenty of simple functions may match anyway, and it'll show how close we can get.
+Its checksum matches the one stored in the image, so the split is correct.
+Its partial copy of the versioning rules is replaced by a pointer to the standard.
+Its repo has a publish workflow; is pushing a version tag the way to trigger it?
+Jobs commit in small batches instead, each finishing in well under a second.
+Jobs could instead send their results to the server through a pipe or socket, with the server as the only writer.
+Just now I did the same thing again: I went with per-module compiled output and called the source option rejected, without asking you.
+Libraries: add a folder, then scan with live progress.
+Literal pool values are plain numbers, not symbols.
+Load addresses follow on from the previous region, and run addresses are fixed or follow another region.
+Looking at how the code uses it.
+Looking at the instruction and where that value lives.
+Looking at what those targets hold.
+Making that work is a large, gradual job.
+Malformed headers return typed errors instead of crashing.
+Matching depends on far more than the source code.
+Matching the whole image is the final check.
+Meanwhile I'll remove the temporary worktree and update the docs.
+Meta is done: four local commits, none pushed.
+My directory scan read past its end and into the first partition's header.
+My first search missed them because of a masking bug.
+Neither word appears in the report at all, as pointer or as integer, so the classifier never looked at them.
+New entity types get a prefix when they're added.
+Next I'll add a justfile, then lint and commit.
+Next I'll check that one of them is followed by a branch table.
+Next I'll list what's inside before extracting it.
+Next I'll pick up the relocatable assembly where I was interrupted.
+Next I'll see how labels flow between regions so I can make that branch symbolic.
+Next is the database schema and migrations, then the scanner as a background job run against the fixture library.
+Next, a few small shared components (an error alert, a labelled form field, and the centred card used by the sign-in screens), then the setup, sign-in and session-gate pages.
+Next, a static ffmpeg build for generating test fixtures.
+No component depends on the generated palette.
+No pointers to it in either image.
+No, there's no web client yet.
+Nobody can delete their own account or the last admin.
+Non-streaming requests wait the whole time before getting a body.
+None of them are pushed, so I can rewrite their messages to use the new one.
+Nothing else in the design has to change for this.
+Nothing for this second round is committed yet.
+Nothing had been pushed, so nothing else refers to the old hashes.
+Nothing has been published to npm.
+Nothing in the layout or the reports needs to change when it arrives.
+Now an integration test that scans the fixture library: a first scan, a rescan where everything is unchanged, and an unreadable directory.
+Now rewriting the trailers on the eight unpushed commits.
+Now the configure side, which turns the regions into output sections with chained run and load addresses.
+Now the crate code: connection setup, libraries, jobs, and the scan session that applies batches and finishes a scan.
+Now the script that generates the fixture library.
+Now wiring it into the splitter.
+Numbered tracks now sort before unnumbered ones.
+On pull requests it also lists the functions whose match changed against the base branch's report.
+On startup, jobs left running by a previous server are marked as failed.
+Once it exists, the redirect stops and the name points to the new repo.
+Once it shows up, I'll pick it up in the next export.
+Once you've done that, I can confirm the connection with a quick call.
+Only one write transaction can run at a time across all processes.
+Otherwise stale data ranges would pile up.
+Overrides from a tool are tagged with where they came from, so they can be reviewed or reverted as a group.
+Packaging is still running in the background.
+Per-module output gets the same tree-shaking without that cost.
+Playing a track queues the rest of that folder.
+Please review them before I start; this time I want your sign-off before building.
+Pointer targets get a label in whichever region owns them, including bss.
+Pulling a longer history to find the jump into it.
+Pushing, then deleting the backup branch, which exists only on this machine.
+Queries are checked against the real schema when compiling.
+Re-running the register bisect on the rebuilt shifted image to find the next divergence, if any.
+Readers never block each other, and they don't block the writer.
+Reading the code that computes it.
+Reading the object, its vtable pointer and the slot at the call.
+Reading the rule that produces that reason.
+Reading the start of the boot log.
+Rebuilding the non-matching image and booting it again.
+Rebuilding: the matching build must stay byte-identical and the shift check must pass.
+Recovery codes, or an admin reset?
+Recovery codes, or rely on an admin reset?
+Reports must contain only names, sizes and match percentages, never instruction-level diffs or assembly.
+SQLite handles that, with some conditions.
+SQLite with one write connection and four read-only ones, migrated automatically on startup.
+Say if you meant something else.
+Shall I identify the compiler now?
+Shall I push this, then start on the web client against these endpoints?
+Should I clone it outside the repo, build it and try both images?
+Should uploads be organised into folders automatically, or dropped into one inbox folder?
+So a literal-pool word pointing into rodata was classified as an integer.
+So pushing now would put the fresh history into your renamed old project.
+So shipping source would shrink the bundle by very little more.
+So the slot itself must be wrong.
+Starting with the docs, then tooling, then the code skeleton.
+Stopping there to see what jumped.
+Strings resolve to the right addresses too.
+Surveying the library over the network, then I'll come back with questions.
+Tags are used when present, untagged files stay untagged, and corrections go into the overrides layer, whether a person or an automated tool enters them.
+Tell me once it's back up and I'll try again.
+Tell me when you're happy and I'll delete it.
+That affects a couple of the questions below.
+That also removes the requirement that the database sit on a local disk for multi-process locking.
+That breaks the fixed-address link unless every pointer in code and data is symbolic.
+That changes every commit hash, but nothing else depends on them yet.
+That conflicts with what I suggested earlier.
+That covers the binary being replaced on disk while the server is still running.
+That depends heavily on which compiler built this, so I'll check the binary for toolchain fingerprints before answering.
+That edit failed to apply as well, because of the formatter's line wrapping, so the rules haven't changed yet.
+That exposed relocation bugs the shift check can't see, because it only checks words already classified as pointers.
+That follows from which compiler and linker we use, which I can identify next.
+That gives a readable, modifiable build for your own customisations, checked by running it rather than by bytes.
+That matters more now that untagged music is found by browsing folders.
+That means a per-user history of plays and recently opened items in the database.
+That should reveal the thread and task model, and every other subsystem goes through it.
+That shows the moved references get fixed up, but not that the padded image would run.
+That's a good point to update my project memory before carrying on.
+That's fine while it's just you.
+That's the build you'd actually customise.
+The agent-instructions commit comes after it, but that file isn't part of the npm package, so it doesn't matter.
+The app's bundler can then drop any component it doesn't import, along with that component's dependencies.
+The binaries were extracted without the executable bit, so I'll set it and try again.
+The bug has existed since I added the non-matching build, not from today's changes.
+The catch-alls need to exclude the split assembly objects.
+The code is already verified (matching build, shift check, test and report), so I'll commit now and push once packaging passes.
+The copied theme block and the split-import workaround are gone.
+The edit didn't apply, because the formatter had reflowed that signature.
+The end-to-end test runs the real child process against the fixture library.
+The extractor would suit table-driven tests against a small synthetic image.
+The first migration has libraries, collections (one per folder), tracks with their tags as read from the files, unreadable files, and jobs.
+The first window was presumably closed after that, which shut its server down.
+The job replies with batches of new, changed and missing files and their metadata, and the server writes each batch in one transaction.
+The jobs table in the database can also serve as the queue and progress record.
+The last thing we worked on was small fixes to the web client.
+The matching build and the shift check both pass.
+The memory map came out as intended, so the script worked.
+The memory remap setup must be creating extra address ranges.
+The meta links keep working, and the old code stays reachable without us building on it.
+The metadata inference is a good fit for table-driven tests, using real filenames from the share as test cases.
+The names I used are right, but I'll add a few more tokens the app will need: the font, card and edge colours, and the radius.
+The non-matching pipeline works end to end.
+The one-year window is a number I picked.
+The option order was wrong: ffmpeg needs the output options after the inputs.
+The other is surveying pointer-like values, to work out rules for telling pointers from integers.
+The peripheral blocks were created read-only and volatile, so no code gets disassembled into them.
+The plugin generates the light and dark colours into a stylesheet the app imports once.
+The private repo option covers both.
+The project directory is empty, so this is a fresh start.
+The push notification was skipped because this terminal is active, so it's all here.
+The real exception happened earlier, so I'm looking for a trace flag that catches the first one.
+The real server works end to end: first-user setup, then a library, a scan in a child process, browsing, and unauthenticated requests rejected.
+The remote is empty now, so it's the new repo.
+The review agent will run builds in the main checkout.
+The rodata rule accepts only word-aligned addresses, strings and byte tables.
+The run failed before reaching the shift check, the differential test and packaging.
+The second listing is just a repeat run that stalled, so I'm stopping it.
+The server can tell from the prefix which table to look in.
+The server limits how many jobs run at once, kills any that stop responding, and marks interrupted jobs as failed on startup.
+The server opens the database at startup and marks jobs left over from a previous run as failed.
+The shifted run either copied zeros there or zeroed it afterwards.
+The shifted test build shows they behave correctly.
+The stubs and the start-up layout would just be generated assembly, assembled byte for byte.
+The tests call two helper methods that don't exist.
+The title shows the filename without the extension, marked as a fallback rather than stored as a value.
+The version and flags that match exactly are the ones we'll use.
+The versioning standard covers prefixed release tags.
+The versioning standard should cover prefixed tags.
+The vtable in memory is fine, so the fault must come on a later call through this code, not the first.
+The window you have open now never got a server of its own.
+The working tree is clean, so the stylesheet is still the committed version.
+Their sizes are guesses for now.
+Then I'll boot the non-matching image again.
+Then I'll set up the new repo.
+Then I'll write a proper symbol-merge tool to replace the one-off snippet I used.
+Then I'll write the relocation doc.
+There are now five unpushed commits.
+There were no uncommitted changes, so the push was everything.
+There's a known flaw I'll fix after analysis.
+These are real tables of function pointers, so losing them is a regression.
+These are suggestions; I won't commit to anything until you've reviewed them.
+This directory isn't a git repository yet, so there's no local git config to set them in.
+Those endpoints would let an admin add a library and start a scan.
+Those errors only mean the offline query data is out of date after splitting the credentials query.
+Those links will go to the old repo until the new one exists.
+Those words are now written as raw words instead.
+To check that, the server has to be able to recover each user's password.
+Unit boundaries now avoid those relocations, and the report works again.
+Untagged tracks show their file name as the title, marked as a fallback.
+Untagged tracks show their file name in italics.
+Uploads only go into a library folder the admin marks as accepting uploads.
+Want me to do that there?
+We'd document this and check for it at startup.
+When they report back I'll lay out the full region map, symbolise the pointers, and add a report of likely pointers that were missed.
+Where did this copy come from?
+While that builds, I'll start the new crates.
+Within a major version, changes are additive only.
+You can delete the folder whenever you like.
+You can list your sessions and end any of them.
+Your git config asks for commits to be signed, and the signing step failed.
+Your global git config still has signing on.
